@@ -1,0 +1,221 @@
+/* General styles for body and container */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    background-color: #C8E9E1;
+    /* Website background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100; /* Ensures the thin weight is applied */
+    padding: 20px
+}
+
+/* Header styling */
+.bingo-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between SVG and text */
+    text-align: center;
+}
+
+.bingo-header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; /* Bold font */
+    font-size: 3.5rem; /* Adjust as needed */
+    color: #FF4D06; /* Christmas red */
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* SVG Decoration Styling */
+.deco {
+    width: 40px; /* Adjust width as needed */
+    height: auto;
+}
+
+/* Container for bingo grid and buttons */
+.bingo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Space between the grid and buttons */
+}
+
+/* Grid container styles (already defined) */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 5px;
+    max-width: 75vh;
+    max-height: 75vh;
+}
+
+/* Button container styles */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between the two buttons */
+}
+
+.button-container button {
+    padding: 10px 20px;
+    background-color: #FF4D06;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.button-container button:hover {
+    background-color: #D63C04;
+}
+
+/* Grid item styles */
+.grid-item {
+    background-color: #FBF6EA;
+    width: 100%;
+    height: 100%;
+    padding: 5px; /* Add padding to keep text away from edges */
+    box-sizing: border-box; /* Ensures padding doesn’t affect overall size */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.grid-item.active {
+    outline: 3px solid #FF4D06;
+}
+
+/* Free space styling */
+.free-space {
+    outline: 3px solid #FF4D06;
+    cursor: default;
+    /* Prevents pointer cursor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.free-space img {
+    width: 90%;
+    /* Adjust as needed for your SVG */
+    height: 90%;
+}
+
+/* Custom Bingo Alert */
+.bingo-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.bingo-alert.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.bingo-content {
+    background-color: #FFFFFF;
+    color: #FF4D06;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    animation: bounceIn 0.6s ease;
+}
+
+.bingo-content h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #FF4D06;
+}
+
+.bingo-content p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #007A33;
+}
+
+.bingo-content button {
+    padding: 10px 20px;
+    background-color: #007A33;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.bingo-content button:hover {
+    background-color: #005F28;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Media query for iPads and larger smartphones */
+@media (max-width: 1024px) {
+    .grid-container {
+        width: 80vw;
+        height: 80vw;
+    }
+}
+
+/* Media query for smaller smartphones */
+@media (max-width: 600px) {
+    .grid-container {
+        width: 95vw;
+        height: 95vw;
+        gap: 3px;
+        /* Reduce gap to fit smaller screens better */
+    }
+
+    .grid-item {
+        padding: 3px; /* Reduced padding for small screens */
+    }
+
+    .bingo-header h1 {
+        font-size: 2.5rem; /* Slightly smaller for mobile */
+    }
+    .deco {
+        width: 30px; /* Smaller decoration on mobile */
+    }
+}
