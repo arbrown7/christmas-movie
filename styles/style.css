@@ -1,0 +1,237 @@
+/* General styles for body and container */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    background-color: #C8E9E1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Header styling */
+.bingo-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.bingo-header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #FF4D06;
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* SVG Decoration Styling */
+.deco {
+    width: 40px;
+    height: auto;
+}
+
+/* Container for bingo grid and buttons */
+.bingo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    /* Full-width container */
+    max-width: 100vw;
+    /* Prevent overflow */
+}
+
+/* Grid container styles for desktop (default view) */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* 5 columns for squares */
+    gap: 5px;
+    width: 75vh;
+    height: 75vh;
+    /* Fixed square grid for desktop */
+}
+
+/* Grid item styles (square for desktop) */
+.grid-item {
+    background-color: #FBF6EA;
+    aspect-ratio: 1 / 1;
+    /* Square aspect ratio for desktop */
+    padding: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 8pt;
+}
+
+.grid-item.active {
+    outline: 3px solid #FF4D06;
+}
+
+.free-space {
+    outline: 3px solid #FF4D06;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.free-space img {
+    width: 90%;
+    height: 90%;
+}
+
+.free-space span {
+    display: none;
+}
+
+/* Button container styles */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    background-color: #FF4D06;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.button-container button:hover {
+    background-color: #D63C04;
+}
+
+/* Custom Bingo Alert */
+.bingo-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.bingo-alert.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.bingo-content {
+    background-color: #FFFFFF;
+    color: #FF4D06;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    animation: bounceIn 0.6s ease;
+}
+
+.bingo-content h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #FF4D06;
+}
+
+.bingo-content p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #007A33;
+}
+
+.bingo-content button {
+    padding: 10px 20px;
+    background-color: #007A33;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.bingo-content button:hover {
+    background-color: #005F28;
+}
+
+/* Responsive Design: Mobile view for rectangular grid items */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(5, 1fr);
+        /* Keep 5 columns */
+        width: 100%;
+        /* Full width of the screen */
+        height: auto;
+        /* Let the height adjust based on content */
+        gap: 3px;
+    }
+
+    .grid-item {
+        aspect-ratio: auto;
+        /* Allow rectangles */
+        padding: 3px;
+        height: 100px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        /* Stack buttons vertically */
+        width: 100%;
+        gap: 10px;
+    }
+
+    .button-container button {
+        width: 100%;
+        /* Full width buttons */
+        padding: 10px;
+    }
+
+    .bingo-header h1 {
+        font-size: 2rem;
+        /* Adjust heading size */
+    }
+
+    .deco {
+        width: 30px;
+        /* Adjust decorative size */
+    }
+
+    .free-space img {
+        display: none;
+    }
+
+    .free-space span {
+        display: flex;
+    }
+}
